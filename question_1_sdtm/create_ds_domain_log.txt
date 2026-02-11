@@ -1,1 +1,173 @@
+[1] "Starting Script"
 
+
+--- SESSION INFO ---
+R version 4.5.2 (2025-10-31)
+Platform: x86_64-pc-linux-gnu
+Running under: Ubuntu 24.04.3 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
+LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0
+
+locale:
+ [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8        LC_COLLATE=C.UTF-8    
+ [5] LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8    LC_PAPER=C.UTF-8       LC_NAME=C             
+ [9] LC_ADDRESS=C           LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+
+time zone: UTC
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] pharmaverseraw_0.1.1  sdtm.oak_0.2.0        pharmaversesdtm_1.3.1 admiral_1.3.1        
+ [5] gtsummary_2.5.0       lubridate_1.9.4       forcats_1.0.1         stringr_1.6.0        
+ [9] dplyr_1.1.4           purrr_1.2.0           readr_2.1.6           tidyr_1.3.2          
+[13] tibble_3.3.0          ggplot2_4.0.1         tidyverse_2.0.0       pharmaverseadam_1.2.0
+
+loaded via a namespace (and not attached):
+ [1] gt_1.2.0           sass_0.4.10        generics_0.1.4     xml2_1.5.1         stringi_1.8.7     
+ [6] hms_1.1.4          digest_0.6.39      magrittr_2.0.4     evaluate_1.0.5     grid_4.5.2        
+[11] timechange_0.3.0   RColorBrewer_1.1-3 cards_0.7.1        fastmap_1.2.0      admiraldev_1.3.1  
+[16] scales_1.4.0       cli_3.6.5          crayon_1.5.3       rlang_1.1.6        litedown_0.9      
+[21] bit64_4.6.0-1      commonmark_2.0.0   withr_3.0.2        parallel_4.5.2     tools_4.5.2       
+[26] tzdb_0.5.0         vctrs_0.6.5        R6_2.6.1           lifecycle_1.0.4    bit_4.6.0         
+[31] fs_1.6.6           vroom_1.6.7        pkgconfig_2.0.3    pillar_1.11.1      gtable_0.3.6      
+[36] glue_1.8.0         xfun_0.55          tidyselect_1.2.1   rstudioapi_0.17.1  knitr_1.51        
+[41] farver_2.1.2       htmltools_0.5.9    compiler_4.5.2     roxygen2_7.3.3     S7_0.2.1          
+[46] markdown_2.0      
+Rows: 850
+Columns: 13
+$ STUDY      <chr> "CDISCPILOT01", "CDISCPILOT01", "CDISCPILOT01", "CDISCPILOT01", "CDISCPILOT01", "CDISCPILOT…
+$ PATNUM     <chr> "701-1015", "701-1015", "701-1015", "701-1023", "701-1023", "701-1023", "701-1023", "701-10…
+$ SITENM     <chr> "CDISCPILOT", "CDISCPILOT", "CDISCPILOT", "CDISCPILOT", "CDISCPILOT", "CDISCPILOT", "CDISCP…
+$ INSTANCE   <chr> "Baseline", "Week 26", "Week 26", "Baseline", "Week 4", "Week 4", "Retrieval", "Baseline", …
+$ FORM       <chr> "DISC1", "DISC1", "DISC1", "DISC1", "DISC1", "DISC1", "DISC1", "DISC1", "DISC1", "DISC1", "…
+$ FORML      <chr> "Subject Disposition", "Subject Disposition", "Subject Disposition", "Subject Disposition",…
+$ IT.DSTERM  <chr> "Randomized", "Protocol Completed", NA, "Randomized", "Adverse Event", NA, NA, "Randomized"…
+$ IT.DSDECOD <chr> "Randomized", "Completed", NA, "Randomized", "Adverse Event", NA, NA, "Randomized", "Comple…
+$ OTHERSP    <chr> NA, NA, "Final Lab Visit", NA, NA, "Final Lab Visit", "Final Retrieval Visit", NA, NA, "Fin…
+$ DSDTCOL    <chr> "01-02-2014", "07-02-2014", "07-02-2014", "08-05-2012", "09-02-2012", "09-02-2012", "02-18-…
+$ DSTMCOL    <chr> NA, NA, "11:45", NA, NA, "10:15", NA, NA, NA, "11:10", NA, NA, "10:38", NA, NA, NA, "09:50"…
+$ IT.DSSTDAT <chr> "01-02-2014", "07-02-2014", "07-02-2014", "08-05-2012", "09-02-2012", "09-02-2012", "02-18-…
+$ DEATHDT    <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+wrote 1.78kB in  0s, 248.86MB/s                                                                                                              wrote 1.00TB in  0s, 17.98TB/s                                                                                                              function (file = NULL, append = FALSE, type = c("output", "message"), 
+    split = FALSE) 
+{
+    type <- match.arg(type)
+    if (type == "message") {
+        if (is.null(file)) 
+            file <- stderr()
+        else if (!inherits(file, "connection") || !isOpen(file)) 
+            stop("'file' must be NULL or an already open connection")
+        if (split) 
+            stop("cannot split the message connection")
+        .Internal(sink(file, FALSE, TRUE, FALSE))
+    }
+    else {
+        closeOnExit <- FALSE
+        if (is.null(file)) 
+            file <- -1L
+        else if (is.character(file)) {
+            file <- file(file, if (append) 
+                "a"
+            else "w")
+            closeOnExit <- TRUE
+        }
+        else if (!inherits(file, "connection")) 
+            stop("'file' must be NULL, a connection or a character string")
+        .Internal(sink(file, closeOnExit, FALSE, split))
+    }
+}
+<bytecode: 0x654507bb4030>
+<environment: namespace:base>
+[1] "Starting Script"
+
+
+--- SESSION INFO ---
+R version 4.5.2 (2025-10-31)
+Platform: x86_64-pc-linux-gnu
+Running under: Ubuntu 24.04.3 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
+LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0
+
+locale:
+ [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8        LC_COLLATE=C.UTF-8    
+ [5] LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8    LC_PAPER=C.UTF-8       LC_NAME=C             
+ [9] LC_ADDRESS=C           LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+
+time zone: UTC
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] pharmaverseraw_0.1.1  sdtm.oak_0.2.0        pharmaversesdtm_1.3.1 admiral_1.3.1        
+ [5] gtsummary_2.5.0       lubridate_1.9.4       forcats_1.0.1         stringr_1.6.0        
+ [9] dplyr_1.1.4           purrr_1.2.0           readr_2.1.6           tidyr_1.3.2          
+[13] tibble_3.3.0          ggplot2_4.0.1         tidyverse_2.0.0       pharmaverseadam_1.2.0
+
+loaded via a namespace (and not attached):
+ [1] gt_1.2.0           sass_0.4.10        generics_0.1.4     xml2_1.5.1         stringi_1.8.7     
+ [6] hms_1.1.4          digest_0.6.39      magrittr_2.0.4     evaluate_1.0.5     grid_4.5.2        
+[11] timechange_0.3.0   RColorBrewer_1.1-3 cards_0.7.1        fastmap_1.2.0      admiraldev_1.3.1  
+[16] scales_1.4.0       cli_3.6.5          crayon_1.5.3       rlang_1.1.6        litedown_0.9      
+[21] bit64_4.6.0-1      commonmark_2.0.0   withr_3.0.2        parallel_4.5.2     tools_4.5.2       
+[26] tzdb_0.5.0         assertthat_0.2.1   vctrs_0.6.5        R6_2.6.1           lifecycle_1.0.4   
+[31] bit_4.6.0          fs_1.6.6           vroom_1.6.7        pkgconfig_2.0.3    pillar_1.11.1     
+[36] gtable_0.3.6       glue_1.8.0         xfun_0.55          tidyselect_1.2.1   rstudioapi_0.17.1 
+[41] knitr_1.51         farver_2.1.2       htmltools_0.5.9    compiler_4.5.2     roxygen2_7.3.3    
+[46] S7_0.2.1           markdown_2.0      
+Rows: 306
+Columns: 28
+$ STUDYID  <chr> "CDISCPILOT01", "CDISCPILOT01", "CDISCPILOT01", "CDISCPILOT01", "CDISCPILOT01", "CDISCPILOT01…
+$ USUBJID  <chr> "01-701-1015", "01-701-1023", "01-701-1028", "01-701-1033", "01-701-1034", "01-701-1047", "01…
+$ SUBJID   <chr> "1015", "1023", "1028", "1033", "1034", "1047", "1057", "1097", "1111", "1115", "1118", "1130…
+$ RFSTDTC  <chr> "2014-01-02", "2012-08-05", "2013-07-19", "2014-03-18", "2014-07-01", "2013-02-12", NA, "2014…
+$ RFENDTC  <chr> "2014-07-02", "2012-09-02", "2014-01-14", "2014-04-14", "2014-12-30", "2013-03-29", NA, "2014…
+$ RFXSTDTC <chr> "2014-01-02", "2012-08-05", "2013-07-19", "2014-03-18", "2014-07-01", "2013-02-12", NA, "2014…
+$ RFXENDTC <chr> "2014-07-02", "2012-09-01", "2014-01-14", "2014-03-31", "2014-12-30", "2013-03-09", NA, "2014…
+$ RFICDTC  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ RFPENDTC <chr> "2014-07-02T11:45", "2013-02-18", "2014-01-14T11:10", "2014-09-15", "2014-12-30T09:50", "2013…
+$ DTHDTC   <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ DTHFL    <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ SITEID   <chr> "701", "701", "701", "701", "701", "701", "701", "701", "701", "701", "701", "701", "701", "7…
+$ AGE      <dbl> 63, 64, 71, 74, 77, 85, 59, 68, 81, 84, 52, 84, 81, 57, 75, 57, 79, 82, 62, 56, 79, 71, 80, 8…
+$ AGEU     <chr> "YEARS", "YEARS", "YEARS", "YEARS", "YEARS", "YEARS", "YEARS", "YEARS", "YEARS", "YEARS", "YE…
+$ SEX      <chr> "F", "M", "M", "M", "F", "F", "F", "M", "F", "M", "M", "M", "F", "F", "F", "M", "F", "F", "F"…
+$ RACE     <chr> "WHITE", "WHITE", "WHITE", "WHITE", "WHITE", "WHITE", "WHITE", "WHITE", "WHITE", "WHITE", "WH…
+$ ETHNIC   <chr> "HISPANIC OR LATINO", "HISPANIC OR LATINO", "NOT HISPANIC OR LATINO", "NOT HISPANIC OR LATINO…
+$ ARMCD    <chr> "Pbo", "Pbo", "Xan_Hi", "Xan_Lo", "Xan_Hi", "Pbo", "Scrnfail", "Xan_Lo", "Xan_Lo", "Xan_Lo", …
+$ ARM      <chr> "Placebo", "Placebo", "Xan$ STUDYID  <chr> "CDISCPILOT01", "CDISCPILOT01", "CDISCPILOT01", "CDISCPILOT01", "CDISCPILOT01", "CDISCPILOT01…
+$ USUBJID  <chr> "01-701-1015", "01-701-1023", "01-701-1028", "01-701-1033", "01-701-1034", "01-701-1047", "01…
+$ SUBJID   <chr> "1015", "1023", "1028", "1033", "1034", "1047", "1057", "1097", "1111", "1115", "1118", "1130…
+$ RFSTDTC  <chr> "2014-01-02", "2012-08-05", "2013-07-19", "2014-03-18", "2014-07-01", "2013-02-12", NA, "2014…
+$ RFENDTC  <chr> "2014-07-02", "2012-09-02", "2014-01-14", "2014-04-14", "2014-12-30", "2013-03-29", NA, "2014…
+$ RFXSTDTC <chr> "2014-01-02", "2012-08-05", "2013-07-19", "2014-03-18", "2014-07-01", "2013-02-12", NA, "2014…
+$ RFXENDTC <chr> "2014-07-02", "2012-09-01", "2014-01-14", "2014-03-31", "2014-12-30", "2013-03-09", NA, "2014…
+$ RFICDTC  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ RFPENDTC <chr> "2014-07-02T11:45", "2013-02-18", "2014-01-14T11:10", "2014-09-15", "2014-12-30T09:50", "2013…
+$ DTHDTC   <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N
+wrote 4.28kB in  0s, 855.44MB/s                                                                                                              wrote 1.00TB in  0s, 55.38TB/s                                                                                                              [1] "Script finished successfully."
+, 84, 52, 84, 81, 57, 75, 57, 79, 82, 62, 56, 79, 71, 80, 8…
+$ AGEU     <chr> "YEARS", "YEARS", "YEARS", "YEARS", "YEARS", "YEARS", "YEARS", "YEARS", "YEARS", "YEARS", "YE…
+$ SEX      <chr> "F", "M", "M", "M", "F", "F", "F", "M", "F", "M", "M", "M", "F", "F", "F", "M", "F", "F", "F"…
+$ RACE     <chr> "WHITE", "WHITE", "WHITE", "WHITE", "WHITE", "WHITE", "WHITE", "WHITE", "WHITE", "WHITE", "WH…
+$ ETHNIC   <chr> "HISPANIC OR LATINO", "HISPANIC OR LATINO", "NOT HISPANIC OR LATINO", "NOT HISPANIC OR LATINO…
+$ ARMCD    <chr> "Pbo", "Pbo", "Xan_Hi", "Xan_Lo", "Xan_Hi", "Pbo", "Scrnfail", "Xan_Lo", "Xan_Lo", "Xan_Lo", …
+$ ARM      <chr> "Placebo", "Placebo", "Xanomeline High Dose", "Xanomeline Low Dose", "Xanomeline High Dose", …
+$ ACTARMCD <chr> "Pbo", "Pbo", "Xan_Hi", "Xan_Lo", "Xan_Hi", "Pbo", "Scrnfail", "Xan_Lo", "Xan_Lo", "Xan_Lo", …
+$ ACTARM   <chr> "Placebo", "Placebo", "Xanomeline High Dose", "Xanomeline Low Dose", "Xanomeline High Dose", …
+$ COUNTRY  <chr> "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", "U…
+$ DMDTC    <chr> "2013-12-26", "2012-07-22", "2013-07-11", "2014-03-10", "2014-06-24", "2013-01-22", "2013-12-…
+$ DMDY     <dbl> -7, -14, -8, -8, -7, -21, NA, -9, -13, -7, -13, -6, -5, NA, -13, -9, -17, NA, NA, -15, -9, -1…
+$ AGEGR9   <chr> ">50", ">50", ">50", ">50", ">50", ">50", ">50", ">50", ">50", ">50", ">50", ">50", ">50", ">…
+$ AGEGR9N  <dbl> 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
+$ TRTSDTM  <dttm> 2014-01-02, 2012-08-05, 2013-07-19, 2014-03-18, 2014-07-01, 2013-02-12, NA, 2014-01-01, 2012…
+$ TRTSTMF  <chr> "H", "H", "H", "H", "H", "H", NA, "H", "H", "H", "H", "H", "H", NA, "H", "H", "H", NA, NA, "H…
+wrote 4.28kB in  0s, 855.44MB/s                                                                                                              wrote 1.00TB in  0s, 55.38TB/s                                                                                                              [1] "Script finished successfully."
